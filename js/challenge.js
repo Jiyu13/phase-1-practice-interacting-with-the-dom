@@ -8,6 +8,8 @@ let pauseBtn = document.querySelector("#pause")
 const minusBtn = document.querySelector("#minus")
 const plusBtn = document.querySelector("#plus")
 let submitBtn = document.querySelector("#submit")
+let commentForm = document.querySelector("#comment-form")
+let commentList = document.querySelector("#list")
 
 let isPaused = true
 let isDisabled = true
@@ -16,6 +18,18 @@ let check = startCount()
 handleMinus();
 handlePlus();
 
+// submit comment 
+let ul = document.createElement("ul")
+commentForm.addEventListener("submit", (event) => {
+    event.preventDefault()
+    let input = commentForm.querySelector("#comment-input").value
+    commentList.append(ul)
+
+    let li = document.createElement("li")
+    li.textContent = input
+    ul.append(li)
+    commentForm.reset()  // clear input after submit
+})
 
 // handle pause counter
 pauseBtn.addEventListener("click", () => {
