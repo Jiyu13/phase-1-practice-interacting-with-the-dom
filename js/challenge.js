@@ -1,23 +1,3 @@
-// // toggle pause btn
-// function toggle(btn) {
-//     if (btn.value === "ON") {//isDisabled = false, can pause
-//         btn.value = "OFF";
-//         btn.textContent = "resume";
-//         minusBtn.disabled = !isDisabled
-//         plusBtn.disabled = !isDisabled
-//         likeBtn.disabled = !isDisabled
-//         submitBtn.disabled = !isDisabled
-//     } else if (btn.value === "OFF") {
-//         btn.value = "ON";;
-//         btn.textContent = "pause"
-//         minusBtn.disabled = isDisabled
-//         plusBtn.disabled = isDisabled
-//         likeBtn.disabled = isDisabled
-//         submitBtn.disabled = isDisabled
-//     }
-// }
-
-
 const h1 = document.querySelector("#counter")
 let start = parseInt(h1.textContent)
 
