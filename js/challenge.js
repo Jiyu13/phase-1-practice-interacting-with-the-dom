@@ -1,3 +1,23 @@
+// // toggle pause btn
+// function toggle(btn) {
+//     if (btn.value === "ON") {//isDisabled = false, can pause
+//         btn.value = "OFF";
+//         btn.textContent = "resume";
+//         minusBtn.disabled = !isDisabled
+//         plusBtn.disabled = !isDisabled
+//         likeBtn.disabled = !isDisabled
+//         submitBtn.disabled = !isDisabled
+//     } else if (btn.value === "OFF") {
+//         btn.value = "ON";;
+//         btn.textContent = "pause"
+//         minusBtn.disabled = isDisabled
+//         plusBtn.disabled = isDisabled
+//         likeBtn.disabled = isDisabled
+//         submitBtn.disabled = isDisabled
+//     }
+// }
+
+
 const h1 = document.querySelector("#counter")
 let start = parseInt(h1.textContent)
 
@@ -9,8 +29,8 @@ const minusBtn = document.querySelector("#minus")
 const plusBtn = document.querySelector("#plus")
 let submitBtn = document.querySelector("#submit")
 
-let isPaused = false
-
+let isPaused = true
+let isDisabled = true
 
 let check = startCount()
 handleMinus();
@@ -19,14 +39,24 @@ handlePlus();
 
 // handle pause counter
 pauseBtn.addEventListener("click", () => {
-    isPaused = !isPaused;
-    clearInterval(check)
-    pauseBtn.textContent = "resume"
-    minusBtn.disabled = true
-    plusBtn.disabled = true
-    likeBtn.disabled = true
-    submitBtn.disabled = true
-
+    if (isPaused) {
+        clearInterval(check)
+        pauseBtn.textContent = "resume"
+        minusBtn.disabled = isDisabled
+        plusBtn.disabled = isDisabled
+        likeBtn.disabled = isDisabled
+        submitBtn.disabled = isDisabled
+        console.log(isPaused)
+    } else {
+        check = startCount() // reassign check to startCount() here to continue counting  
+        pauseBtn.textContent = "pause"
+        minusBtn.disabled = !isDisabled
+        plusBtn.disabled = !isDisabled
+        likeBtn.disabled = !isDisabled
+        submitBtn.disabled = !isDisabled
+        console.log(isPaused)
+    }
+    isPaused = !isPaused    
 })
 
 
@@ -59,11 +89,9 @@ function handlePlus() {
 
 
 function startCount() {
-    if (!isPaused) {
-        return setInterval(function () {
-            start += 1;
-            h1.textContent = start
-            console.log(h1.textContent)
-        }, 1000)
-    }
+    return setInterval(function () {
+        start += 1;
+        h1.textContent = start
+        console.log(start)
+    }, 1000)
 }
